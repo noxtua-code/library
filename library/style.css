@@ -3,7 +3,18 @@
   --clr-neutral-200: hsl(300, 100%, 100%);
   --clr-accent-400: hsl(35, 100%, 55%);
   --clr-primary-400: hsl(174, 62%, 47%);
+  --clr-primary-600: hsl(174, 62%, 38%);
   --clr-secondary-800: hsl(199, 71%, 15%);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-400: 1rem;
+  --fs-500: 1.5rem;
+  --fs-600: 2rem;
+  --fs-700: 2.5rem;
 }
 
 /* Box sizing rules */
@@ -71,7 +82,13 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+  font-family: 'Cabin', sans-serif;
   background-color: var(--clr-primary-400);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
 }
 
 button {
@@ -81,6 +98,8 @@ button {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: relative;
+  width: min-content;
+  cursor: pointer;
 }
 
 button::after {
@@ -102,14 +121,58 @@ button:focus::after {
   transition: transform 0.5s;
 }
 
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;  
+}
+
+sidebar {
+  height: 100%;
+  width: 100%;
+  border-left: 2px solid var(--clr-neutral-200);
+
+  display: grid;
+  grid-template-columns: 1fr 75% 1fr;
+  align-items: center;
+}
+
+.form-container {
+  grid-column: 2 / 3;
+  background-color: var(--clr-primary-600);
+  color: var(--clr-neutral-200);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 15px;
+
+  height: min-content;
+  padding-block: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: var(--fs-500);
+  justify-items: end;
+}
+
+.form-container h1 {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-700);
+}
+
 .card {
   background-color: var(--clr-neutral-200); 
   color: var(--clr-secondary-800);
-  width: max-content;
-  padding: 1rem;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
+  padding: 1rem;
 }
 
 .card ul {
