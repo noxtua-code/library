@@ -11,7 +11,8 @@
   --fw-semibold: 600;
   --fw-bold: 700;
 
-  --fs-400: 1rem;
+  --fs-400: 1.1rem;
+  --fs-450: 1.35rem;
   --fs-500: 1.5rem;
   --fs-600: 2rem;
   --fs-700: 2.5rem;
@@ -155,10 +156,12 @@ sidebar {
 }
 
 form {
+  --form-font-size: var(--fs-500);
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  font-size: var(--fs-500);
+  font-size: var(--form-font-size);
   justify-items: end;
 }
 
@@ -173,9 +176,86 @@ form {
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   padding: 1rem;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
 }
 
 .card ul {
   list-style: none;
 }
 
+.card li:first-child {
+  color: var(--clr-accent-400);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-450);
+}
+
+.card:hover {
+  outline: 3px solid var(--clr-accent-400);
+}
+
+form input {
+  border: none;
+  height: calc(1.2 * var(--form-font-size));
+  width: fit-content;
+  justify-self: flex-start;
+  align-self: center;
+  background-color: var(--clr-neutral-200);
+  font-size: var(--fs-400);
+}
+
+form input:hover,
+form input:focus {
+  outline: 2px solid var(--clr-accent-400);
+}
+
+[type=checkbox] {
+  justify-self: flex-start;
+  align-self: center;
+  width: calc(1.2 * var(--form-font-size));
+  height: calc(1.2 * var(--form-font-size));
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  outline: 0;
+  flex-grow: 0;
+  border-radius: 50%;
+  background-color: var(--clr-neutral-200);
+  transition: background 300ms;
+  cursor: pointer;
+}
+
+
+/* Pseudo element for check styling */
+
+[type=checkbox]::before {
+  content: "";
+  color: transparent;
+  display: block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  box-shadow: inset 0 0 0 1px #CCD3D8;
+}
+
+/* Hover */
+[type=checkbox]:hover,
+[type=checkbox]:focus {
+  outline: 2px solid var(--clr-accent-400);
+}
+
+/* Checked */
+
+[type=checkbox]:checked {
+  background-color: var(--clr-accent-400);
+}
+
+[type=checkbox]:checked::before {
+  box-shadow: none;
+  background-image: url("./check.svg");
+  filter: invert();
+}

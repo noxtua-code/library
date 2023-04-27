@@ -86,5 +86,5 @@ newBookForm.addEventListener("submit", (e) => {
   title.value = "";
   author.value = "";
   pages.value = "";
-  read.value = "";
+  read.checked = false;
 });
