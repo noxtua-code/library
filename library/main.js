@@ -3,10 +3,6 @@ const myLibrary = [];
 const myLibraryCards = [];
 const removeBookButtons = [];
 const newBookForm = document.querySelector("#new-book-form");
-const title = document.querySelector("#title");
-const author = document.querySelector("#author");
-const pages = document.querySelector("#pages");
-const read = document.querySelector("#read");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,8 +11,15 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(newBookObject) {
-  myLibrary.push(newBookObject);
+function addBookToLibrary() {
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+  const read = document.querySelector("#read");
+
+  const newBook = new Book(title.value, author.value, pages.value, read.value);
+
+  myLibrary.push(newBook);
 }
 
 // Add Book keys to list
@@ -67,8 +70,7 @@ function createBookCard(newBookObject) {
 newBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const newBook = new Book(title.value, author.value, pages.value, read.value);
-  addBookToLibrary(newBook);
+  addBookToLibrary();
   createBookCard(myLibrary.at(-1));
 
   title.value = "";
@@ -105,20 +107,20 @@ main.addEventListener("click", (e) => {
 /**
  * TO BE DELETED - TESTING
  */
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
-addBookToLibrary(theHobbit);
+// const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
+// addBookToLibrary(theHobbit);
 
-const gideonTheNinth = new Book("Gideon the Ninth", "Tamsyn Muir", 492, true);
-addBookToLibrary(gideonTheNinth);
+// const gideonTheNinth = new Book("Gideon the Ninth", "Tamsyn Muir", 492, true);
+// addBookToLibrary(gideonTheNinth);
 
-const bookHasSpiders = new Book(
-  "This book is full of spiders: seriously, dude, don't touch it",
-  "David Wong",
-  450,
-  false
-);
-addBookToLibrary(bookHasSpiders);
+// const bookHasSpiders = new Book(
+//   "This book is full of spiders: seriously, dude, don't touch it",
+//   "David Wong",
+//   450,
+//   false
+// );
+// addBookToLibrary(bookHasSpiders);
 
-Object.keys(myLibrary).forEach((item) => {
-  createBookCard(myLibrary[item]);
-});
+// Object.keys(myLibrary).forEach((item) => {
+//   createBookCard(myLibrary[item]);
+// });
