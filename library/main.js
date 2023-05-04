@@ -1,3 +1,12 @@
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
+
 const library = (() => {
   const myLibrary = [];
 
@@ -29,7 +38,7 @@ const library = (() => {
 
   function _submitForm(e) {
     e.preventDefault();
-    addBookToLibrary();
+    addBookToLibrary(title.value, author.value, pages.value, read.checked);
 
     title.value = "";
     author.value = "";
@@ -37,13 +46,8 @@ const library = (() => {
     read.checked = false;
   }
 
-  function addBookToLibrary() {
-    const newBook = {
-      title: title.value,
-      author: author.value,
-      pages: pages.value,
-      read: read.checked,
-    };
+  function addBookToLibrary(bookTitle, bookAuthor, bookPages, readStatus) {
+    const newBook = new Book(bookTitle, bookAuthor, bookPages, readStatus);
     myLibrary.unshift(newBook);
     _render();
   }
